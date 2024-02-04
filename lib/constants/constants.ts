@@ -1,24 +1,15 @@
 interface HandlerFilePaths {
-  initializeGame: string;
+  roomEventsSubscriber: string;
 }
 
 interface HandlerFunctionNames {
-  initializeGame: string;
+  roomEventsSubscriber: string;
 }
-
-interface ResourcePaths {
-  games: string;
-}
-
 export const HandlerFilePaths: HandlerFilePaths = {
-  initializeGame:
-    "../../../lambda/handlers/rest/initialize-game-handler/src/index.ts",
+  roomEventsSubscriber:
+    "../../../lambda/handlers/subscribers/room-events-subscriber/src/index.ts",
 };
 
 export const HandlerFunctionNames: HandlerFunctionNames = {
-  initializeGame: "handler",
-};
-
-export const ResourcePaths: ResourcePaths = {
-  games: "games",
+  roomEventsSubscriber: "handler",
 };
