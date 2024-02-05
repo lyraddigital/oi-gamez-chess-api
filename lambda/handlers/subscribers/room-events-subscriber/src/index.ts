@@ -3,6 +3,7 @@ import { EventBridgeEvent } from "aws-lambda";
 import {
   GameInitializedEvent,
   RoomCreatedEvent,
+  RoomEvent,
   RoomEventTypes,
   publishRoomEvents,
 } from "@oigamez/event-bridge";
@@ -12,7 +13,7 @@ import { validateEnvironment } from "./configuration";
 validateEnvironment();
 
 export const handler = async (
-  event: EventBridgeEvent<any, any>
+  event: EventBridgeEvent<RoomEventTypes, RoomEvent>
 ): Promise<void> => {
   if (event["detail-type"] === RoomEventTypes.roomCreated) {
     const { roomCode } = event.detail as RoomCreatedEvent;
