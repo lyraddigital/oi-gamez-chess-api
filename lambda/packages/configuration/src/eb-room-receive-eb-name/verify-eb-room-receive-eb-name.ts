@@ -1,9 +1,9 @@
-import { EB_ROOM_RECEIVE_EVENT_NAME } from "./eb-room-receive-eb-name";
+import { ROOM_RECEIVE_EVENT_BUS_NAME } from "./eb-room-receive-eb-name";
 
 export const verifyEbRoomReceiveEventName = (): void => {
-  if (!EB_ROOM_RECEIVE_EVENT_NAME) {
+  if (!ROOM_RECEIVE_EVENT_BUS_NAME) {
     throw new Error(
-      "EB_ROOM_RECEIVE_EVENT_NAME environment variable is not set"
+      "ROOM_RECEIVE_EVENT_BUS_NAME environment variable is not set"
     );
   }
 };

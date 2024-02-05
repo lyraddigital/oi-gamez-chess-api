@@ -5,8 +5,8 @@ import {
 } from "@aws-sdk/client-eventbridge";
 
 import {
-  EB_ROOM_RECEIVE_EVENT_NAME,
-  EB_ROOM_RECEIVE_EVENT_SOURCE_NAME,
+  ROOM_RECEIVE_EVENT_BUS_NAME,
+  ROOM_RECEIVE_EVENT_BUS_EVENT_SOURCE_NAME,
 } from "@oigamez/configuration";
 
 import { client } from "../client";
@@ -37,8 +37,8 @@ export const publishRoomEvents = async <T extends EventBridgeRoomReceiveEvent>(
   items: T[]
 ): Promise<void> => {
   await publishEvents(
-    EB_ROOM_RECEIVE_EVENT_NAME!,
-    EB_ROOM_RECEIVE_EVENT_SOURCE_NAME!,
+    ROOM_RECEIVE_EVENT_BUS_NAME!,
+    ROOM_RECEIVE_EVENT_BUS_EVENT_SOURCE_NAME!,
     items
   );
 };

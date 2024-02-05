@@ -1,2 +1,2 @@
-export const EB_ROOM_RECEIVE_EVENT_NAME =
-  process.env.EB_ROOM_RECEIVE_EVENT_NAME;
+export const ROOM_RECEIVE_EVENT_BUS_NAME =
+  process.env.ROOM_RECEIVE_EVENT_BUS_NAME;
