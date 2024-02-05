@@ -1,0 +1,2 @@
+export const EB_ROOM_RECEIVE_EVENT_NAME =
+  process.env.EB_ROOM_RECEIVE_EVENT_NAME;

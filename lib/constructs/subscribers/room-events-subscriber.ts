@@ -1,11 +1,16 @@
 import { aws_events_targets } from "aws-cdk-lib";
 import { Rule } from "aws-cdk-lib/aws-events";
+import { Effect, PolicyStatement } from "aws-cdk-lib/aws-iam";
 import { Runtime } from "aws-cdk-lib/aws-lambda";
 import { NodejsFunction, OutputFormat } from "aws-cdk-lib/aws-lambda-nodejs";
 import { Construct } from "constructs";
 import { join } from "path";
 
-import { HandlerFunctionNames, HandlerFilePaths } from "../../constants";
+import {
+  HandlerFunctionNames,
+  HandlerFilePaths,
+  EnvironmentVariables,
+} from "../../constants";
 import { RoomEventsSubscriberProps } from "../../props";
 
 export class RoomEventsSubscriber extends Construct {
@@ -21,7 +26,12 @@ export class RoomEventsSubscriber extends Construct {
       bundling: {
         format: OutputFormat.ESM,
       },
-      environment: {},
+      environment: {
+        [EnvironmentVariables.roomEventsSubscriber.roomReceiveEventBusName]:
+          props.roomReceiveEventBus.eventBusName,
+        [EnvironmentVariables.roomEventsSubscriber
+          .roomReceiveEventBusEventSourceName]: props.eventBusSourceName,
+      },
     });
 
     new Rule(this, "RoomEventsSubscriberRule", {
@@ -31,10 +41,18 @@ export class RoomEventsSubscriber extends Construct {
       eventPattern: {
         source: [props.eventBusSourceName],
         detail: {
-          gameTypeId: [1], // Make this some code later on that is configurable
+          gameTypeId: [props.gameTypeId],
         },
       },
       eventBus: props.eventBus,
     });
+
+    const ebPutEventsPolicyDocument = new PolicyStatement({
+      effect: Effect.ALLOW,
+      resources: [props.roomReceiveEventBus.eventBusArn],
+      actions: ["events:PutEvents"],
+    });
+
+    this.lambdaFunction.addToRolePolicy(ebPutEventsPolicyDocument);
   }
 }

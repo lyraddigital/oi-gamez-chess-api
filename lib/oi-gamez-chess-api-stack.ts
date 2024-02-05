@@ -16,10 +16,21 @@ export class OiGamezChessApiStack extends cdk.Stack {
       "RoomExternalEventBus",
       eventBusArn
     );
+    const roomReceiveEventBusArn =
+      "arn:aws:events:ap-southeast-2:767013533477:event-bus/OiGamezRoomApiStackRoomReceiveEventBusOIGamezRoomEventBusBF064656";
+    const roomReceiveEventBusSourceName = "room-receive";
+    const roomReceiveEventBus = EventBus.fromEventBusArn(
+      this,
+      "RoomReceiveEventBus",
+      roomReceiveEventBusArn
+    );
 
     new RoomEventsSubscriber(this, "OIChessRoomEventsSubscriber", {
       eventBus,
       eventBusSourceName,
+      roomReceiveEventBus,
+      roomReceiveEventBusSourceName,
+      gameTypeId: 1, // Make this some code later on that is configurable
     });
   }
 }
