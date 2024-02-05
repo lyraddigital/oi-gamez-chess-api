@@ -30,7 +30,8 @@ export class RoomEventsSubscriber extends Construct {
         [EnvironmentVariables.roomEventsSubscriber.roomReceiveEventBusName]:
           props.roomReceiveEventBus.eventBusName,
         [EnvironmentVariables.roomEventsSubscriber
-          .roomReceiveEventBusEventSourceName]: props.eventBusSourceName,
+          .roomReceiveEventBusEventSourceName]:
+          props.roomReceiveEventBusSourceName,
       },
     });
 
