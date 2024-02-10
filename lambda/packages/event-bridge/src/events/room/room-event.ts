@@ -1,1 +1,3 @@
-export interface RoomEvent {}
+export interface RoomEvent {
+  roomCode: string;
+}

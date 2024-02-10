@@ -7,11 +7,13 @@ interface HandlerFunctionNames {
 }
 
 enum EnvironmentVariableNames {
+  gameTableName = "GAME_TABLE_NAME",
   roomReceiveEventBusName = "ROOM_RECEIVE_EVENT_BUS_NAME",
   roomReceiveEventBusEventSourceName = "ROOM_RECEIVE_EVENT_BUS_EVENT_SOURCE_NAME",
 }
 
 interface RoomEventsSubscriberEnvironmentVariables {
+  gameTableName: string;
   roomReceiveEventBusName: string;
   roomReceiveEventBusEventSourceName: string;
 }
@@ -31,6 +33,7 @@ export const HandlerFunctionNames: HandlerFunctionNames = {
 
 export const EnvironmentVariables: EnvironmentVariables = {
   roomEventsSubscriber: {
+    gameTableName: EnvironmentVariableNames.gameTableName,
     roomReceiveEventBusName: EnvironmentVariableNames.roomReceiveEventBusName,
     roomReceiveEventBusEventSourceName:
       EnvironmentVariableNames.roomReceiveEventBusEventSourceName,

@@ -29,6 +29,9 @@
       "@oigamez/configuration": [
         "./lambda/packages/configuration/src"
       ],
+      "@oigamez/dynamodb": [
+        "./lambda/packages/dynamodb/src"
+      ],
       "@oigamez/event-bridge": [
         "./lambda/packages/event-bridge/src"
       ]
@@ -36,6 +39,7 @@
   },
   "exclude": [
     "node_modules",
-    "cdk.out"
+    "cdk.out",
+    "dist"
   ]
 }

@@ -32,6 +32,8 @@ export class RoomEventsSubscriber extends Construct {
         [EnvironmentVariables.roomEventsSubscriber
           .roomReceiveEventBusEventSourceName]:
           props.roomReceiveEventBusSourceName,
+        [EnvironmentVariables.roomEventsSubscriber.gameTableName]:
+          props.gameTable.tableName,
       },
     });
 
@@ -54,6 +56,13 @@ export class RoomEventsSubscriber extends Construct {
       actions: ["events:PutEvents"],
     });
 
+    const gameTablePolicyDocument = new PolicyStatement({
+      effect: Effect.ALLOW,
+      resources: [props.gameTable.tableArn],
+      actions: ["dynamodb:GetItem", "dynamodb:PutItem"],
+    });
+
     this.lambdaFunction.addToRolePolicy(ebPutEventsPolicyDocument);
+    this.lambdaFunction.addToRolePolicy(gameTablePolicyDocument);
   }
 }

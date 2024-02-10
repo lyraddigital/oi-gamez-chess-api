@@ -1,6 +1,8 @@
+import { TableV2 } from "aws-cdk-lib/aws-dynamodb";
 import { IEventBus } from "aws-cdk-lib/aws-events";
 
 export interface RoomEventsSubscriberProps {
+  gameTable: TableV2;
   eventBus: IEventBus;
   roomReceiveEventBus: IEventBus;
   eventBusSourceName: string;

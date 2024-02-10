@@ -2,7 +2,7 @@ import * as cdk from "aws-cdk-lib";
 import { EventBus } from "aws-cdk-lib/aws-events";
 import { Construct } from "constructs";
 
-import { RoomEventsSubscriber } from "./constructs";
+import { ChessTable, RoomEventsSubscriber } from "./constructs";
 
 export class OiGamezChessApiStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -25,7 +25,10 @@ export class OiGamezChessApiStack extends cdk.Stack {
       roomReceiveEventBusArn
     );
 
+    const gameTable = new ChessTable(this, "OIChessGameTable");
+
     new RoomEventsSubscriber(this, "OIChessRoomEventsSubscriber", {
+      gameTable: gameTable.table,
       eventBus,
       eventBusSourceName,
       roomReceiveEventBus,
