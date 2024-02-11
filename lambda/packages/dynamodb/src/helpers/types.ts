@@ -6,6 +6,7 @@ interface CommonFieldNames {
 }
 
 interface GameFieldNames {
+  gameId: string;
   roomCode: string;
   hostUsername: string;
   whitePlayerUsername: string;
@@ -14,6 +15,7 @@ interface GameFieldNames {
 interface GameFieldValues {
   pk: (gameId: string) => AttributeValue.SMember;
   sk: AttributeValue.SMember;
+  gameId: (gameId: string) => AttributeValue.SMember;
   roomCode: (code: string) => AttributeValue.SMember;
   hostUsername: (hostUsername: string) => AttributeValue.SMember;
   whitePlayerUsername: (whitePlayerUsername: string) => AttributeValue.SMember;

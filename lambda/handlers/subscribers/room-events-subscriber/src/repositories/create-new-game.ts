@@ -18,6 +18,7 @@ export const createNewGame = async (
     Item: {
       [dynamoFieldNames.common.pk]: dynamoFieldValues.game.pk(gameId),
       [dynamoFieldNames.common.sk]: dynamoFieldValues.game.sk,
+      [dynamoFieldNames.game.gameId]: dynamoFieldValues.game.gameId(gameId),
       [dynamoFieldNames.game.roomCode]:
         dynamoFieldValues.game.roomCode(roomCode),
       [dynamoFieldNames.game.hostUsername]:

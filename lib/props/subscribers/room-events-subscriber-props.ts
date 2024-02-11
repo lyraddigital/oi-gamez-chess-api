@@ -3,6 +3,7 @@ import { IEventBus } from "aws-cdk-lib/aws-events";
 
 export interface RoomEventsSubscriberProps {
   gameTable: TableV2;
+  roomCodeIndexName: string;
   eventBus: IEventBus;
   roomReceiveEventBus: IEventBus;
   eventBusSourceName: string;

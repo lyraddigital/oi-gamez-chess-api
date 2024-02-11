@@ -3,6 +3,7 @@ import { EventBus } from "aws-cdk-lib/aws-events";
 import { Construct } from "constructs";
 
 import { ChessTable, RoomEventsSubscriber } from "./constructs";
+import { IndexNames } from "./constants";
 
 export class OiGamezChessApiStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -25,10 +26,13 @@ export class OiGamezChessApiStack extends cdk.Stack {
       roomReceiveEventBusArn
     );
 
-    const gameTable = new ChessTable(this, "OIChessGameTable");
+    const gameTable = new ChessTable(this, "OIChessGameTable", {
+      roomCodeIndexName: IndexNames.roomCode,
+    });
 
     new RoomEventsSubscriber(this, "OIChessRoomEventsSubscriber", {
       gameTable: gameTable.table,
+      roomCodeIndexName: IndexNames.roomCode,
       eventBus,
       eventBusSourceName,
       roomReceiveEventBus,

@@ -44,6 +44,7 @@ export const dynamoFieldNames: DynamoFieldNames = {
     sk: "SK",
   },
   game: {
+    gameId: "GameId",
     roomCode: "RoomCode",
     hostUsername: "HostUsername",
     whitePlayerUsername: "WhitePlayerUsername",
@@ -54,6 +55,7 @@ export const dynamoFieldValues: DynamoFieldValues = {
   game: {
     pk: (gameId: string) => stringAttribute(`Game#${gameId}`),
     sk: stringAttribute("#Metadata"),
+    gameId: (gameId: string) => stringAttribute(gameId),
     roomCode: (roomCode: string) => stringAttribute(roomCode),
     hostUsername: (hostUsername: string) => stringAttribute(hostUsername),
     whitePlayerUsername: (whitePlayerUsername: string) =>
