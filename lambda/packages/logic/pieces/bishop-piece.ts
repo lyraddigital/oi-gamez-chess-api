@@ -13,7 +13,7 @@ export class BishopPiece extends ChessPiece {
       color === PieceColors.black
         ? BLACK_SQUARE_BISHOP_MOVEMENT
         : WHITE_SQUARE_BISHOP_MOVEMENT;
-    super(board, PieceType.bishop, color, movementPaths);
+    super(board, color, movementPaths);
   }
 
   public canMove(startIndex: number, endIndex: number): boolean {

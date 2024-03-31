@@ -1,22 +1,12 @@
-import {
-  MovementPaths,
-  PieceColor,
-  PIECE_COLOR_PREFIXES,
-  PieceType,
-} from "../models";
+import { MovementPaths, PieceColor } from "../models";
 import { Board } from "../game";
 
 export abstract class ChessPiece {
   constructor(
     public board: Board,
-    private pieceType: PieceType,
     public color: PieceColor,
     protected movementPathsMap: Record<number, MovementPaths>
   ) {}
-
-  public get key(): string {
-    return `${PIECE_COLOR_PREFIXES[this.color]}${this.pieceType}`;
-  }
 
   public abstract canMove(startIndex: number, endIndex: number): boolean;
 

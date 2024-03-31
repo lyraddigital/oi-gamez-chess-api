@@ -1,0 +1,131 @@
+import { PIECE_COLOR_PREFIXES, PieceColors, PieceType } from "../models";
+
+export const DEFAULT_BOARD_MAP = new Map<number, string>();
+DEFAULT_BOARD_MAP.set(
+  0,
+  `${PIECE_COLOR_PREFIXES[PieceColors.white]}${PieceType.rook}`
+);
+DEFAULT_BOARD_MAP.set(
+  1,
+  `${PIECE_COLOR_PREFIXES[PieceColors.white]}${PieceType.knight}`
+);
+DEFAULT_BOARD_MAP.set(
+  2,
+  `${PIECE_COLOR_PREFIXES[PieceColors.white]}${PieceType.bishop}`
+);
+DEFAULT_BOARD_MAP.set(
+  3,
+  `${PIECE_COLOR_PREFIXES[PieceColors.white]}${PieceType.queen}`
+);
+DEFAULT_BOARD_MAP.set(
+  4,
+  `${PIECE_COLOR_PREFIXES[PieceColors.white]}${PieceType.king}`
+);
+DEFAULT_BOARD_MAP.set(
+  5,
+  `${PIECE_COLOR_PREFIXES[PieceColors.white]}${PieceType.bishop}`
+);
+DEFAULT_BOARD_MAP.set(
+  6,
+  `${PIECE_COLOR_PREFIXES[PieceColors.white]}${PieceType.knight}`
+);
+DEFAULT_BOARD_MAP.set(
+  7,
+  `${PIECE_COLOR_PREFIXES[PieceColors.white]}${PieceType.rook}`
+);
+DEFAULT_BOARD_MAP.set(
+  8,
+  `${PIECE_COLOR_PREFIXES[PieceColors.white]}${PieceType.pawn}`
+);
+DEFAULT_BOARD_MAP.set(
+  9,
+  `${PIECE_COLOR_PREFIXES[PieceColors.white]}${PieceType.pawn}`
+);
+DEFAULT_BOARD_MAP.set(
+  10,
+  `${PIECE_COLOR_PREFIXES[PieceColors.white]}${PieceType.pawn}`
+);
+DEFAULT_BOARD_MAP.set(
+  11,
+  `${PIECE_COLOR_PREFIXES[PieceColors.white]}${PieceType.pawn}`
+);
+DEFAULT_BOARD_MAP.set(
+  12,
+  `${PIECE_COLOR_PREFIXES[PieceColors.white]}${PieceType.pawn}`
+);
+DEFAULT_BOARD_MAP.set(
+  13,
+  `${PIECE_COLOR_PREFIXES[PieceColors.white]}${PieceType.pawn}`
+);
+DEFAULT_BOARD_MAP.set(
+  14,
+  `${PIECE_COLOR_PREFIXES[PieceColors.white]}${PieceType.pawn}`
+);
+DEFAULT_BOARD_MAP.set(
+  15,
+  `${PIECE_COLOR_PREFIXES[PieceColors.white]}${PieceType.pawn}`
+);
+DEFAULT_BOARD_MAP.set(
+  48,
+  `${PIECE_COLOR_PREFIXES[PieceColors.black]}${PieceType.pawn}`
+);
+DEFAULT_BOARD_MAP.set(
+  49,
+  `${PIECE_COLOR_PREFIXES[PieceColors.black]}${PieceType.pawn}`
+);
+DEFAULT_BOARD_MAP.set(
+  50,
+  `${PIECE_COLOR_PREFIXES[PieceColors.black]}${PieceType.pawn}`
+);
+DEFAULT_BOARD_MAP.set(
+  51,
+  `${PIECE_COLOR_PREFIXES[PieceColors.black]}${PieceType.pawn}`
+);
+DEFAULT_BOARD_MAP.set(
+  52,
+  `${PIECE_COLOR_PREFIXES[PieceColors.black]}${PieceType.pawn}`
+);
+DEFAULT_BOARD_MAP.set(
+  53,
+  `${PIECE_COLOR_PREFIXES[PieceColors.black]}${PieceType.pawn}`
+);
+DEFAULT_BOARD_MAP.set(
+  54,
+  `${PIECE_COLOR_PREFIXES[PieceColors.black]}${PieceType.pawn}`
+);
+DEFAULT_BOARD_MAP.set(
+  55,
+  `${PIECE_COLOR_PREFIXES[PieceColors.black]}${PieceType.pawn}`
+);
+DEFAULT_BOARD_MAP.set(
+  56,
+  `${PIECE_COLOR_PREFIXES[PieceColors.black]}${PieceType.rook}`
+);
+DEFAULT_BOARD_MAP.set(
+  57,
+  `${PIECE_COLOR_PREFIXES[PieceColors.black]}${PieceType.knight}`
+);
+DEFAULT_BOARD_MAP.set(
+  58,
+  `${PIECE_COLOR_PREFIXES[PieceColors.black]}${PieceType.bishop}`
+);
+DEFAULT_BOARD_MAP.set(
+  59,
+  `${PIECE_COLOR_PREFIXES[PieceColors.black]}${PieceType.king}`
+);
+DEFAULT_BOARD_MAP.set(
+  60,
+  `${PIECE_COLOR_PREFIXES[PieceColors.black]}${PieceType.queen}`
+);
+DEFAULT_BOARD_MAP.set(
+  61,
+  `${PIECE_COLOR_PREFIXES[PieceColors.black]}${PieceType.bishop}`
+);
+DEFAULT_BOARD_MAP.set(
+  62,
+  `${PIECE_COLOR_PREFIXES[PieceColors.black]}${PieceType.knight}`
+);
+DEFAULT_BOARD_MAP.set(
+  63,
+  `${PIECE_COLOR_PREFIXES[PieceColors.black]}${PieceType.rook}`
+);

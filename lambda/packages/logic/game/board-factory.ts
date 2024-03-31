@@ -3,98 +3,66 @@ import {
   ChessPiece,
   KingPiece,
   KnightPiece,
+  PawnPiece,
   QueenPiece,
   RookPiece,
 } from "../pieces";
-import { PieceColors } from "../models";
+import { PIECE_COLOR_PREFIXES, PieceColors, PieceType } from "../models";
 
 import { Board } from "./board";
-import { ChessPieceStartIndexes } from "./chess-piece-start-indexes";
+import { DEFAULT_BOARD_MAP } from "./default-board-map";
 
 export class BoardFactory {
   public static createInitialBoard(): Board {
+    return BoardFactory.createFromConfiguration(DEFAULT_BOARD_MAP);
+  }
+
+  public static createFromConfiguration(
+    configuration: Map<number, string>
+  ): Board {
     const chessBoardMap: Record<number, ChessPiece> = {};
     const board = new Board(chessBoardMap);
 
-    chessBoardMap[ChessPieceStartIndexes.LeftWhiteRook] = new RookPiece(
-      board,
-      PieceColors.white
-    );
+    for (const boardIndex of configuration.keys()) {
+      const entry = configuration.get(boardIndex);
 
-    chessBoardMap[ChessPieceStartIndexes.LeftWhiteKnight] = new KnightPiece(
-      board,
-      PieceColors.white
-    );
+      if (entry) {
+        const color =
+          entry.charAt(0) === PIECE_COLOR_PREFIXES[PieceColors.black]
+            ? PieceColors.black
+            : PieceColors.white;
+        const pieceTypeCode = entry.substring(1);
+        let chessPiece: ChessPiece;
 
-    chessBoardMap[ChessPieceStartIndexes.LeftWhiteBishop] = new BishopPiece(
-      board,
-      PieceColors.white
-    );
+        switch (pieceTypeCode) {
+          case PieceType.rook: {
+            chessPiece = new RookPiece(board, color);
+            break;
+          }
+          case PieceType.knight: {
+            chessPiece = new KnightPiece(board, color);
+            break;
+          }
+          case PieceType.bishop: {
+            chessPiece = new BishopPiece(board, color);
+            break;
+          }
+          case PieceType.queen: {
+            chessPiece = new QueenPiece(board, color);
+            break;
+          }
+          case PieceType.king: {
+            chessPiece = new KingPiece(board, color);
+            break;
+          }
+          default: {
+            chessPiece = new PawnPiece(board, color);
+          }
+        }
 
-    chessBoardMap[ChessPieceStartIndexes.WhiteQueen] = new QueenPiece(
-      board,
-      PieceColors.white
-    );
-
-    chessBoardMap[ChessPieceStartIndexes.WhiteKing] = new KingPiece(
-      board,
-      PieceColors.white
-    );
-
-    chessBoardMap[ChessPieceStartIndexes.RightWhiteBishop] = new BishopPiece(
-      board,
-      PieceColors.white
-    );
-
-    chessBoardMap[ChessPieceStartIndexes.RightWhiteKnight] = new KnightPiece(
-      board,
-      PieceColors.white
-    );
-
-    chessBoardMap[ChessPieceStartIndexes.RightWhiteRook] = new RookPiece(
-      board,
-      PieceColors.white
-    );
-
-    chessBoardMap[ChessPieceStartIndexes.LeftBlackRook] = new RookPiece(
-      board,
-      PieceColors.black
-    );
-
-    chessBoardMap[ChessPieceStartIndexes.LeftBlackKnight] = new KnightPiece(
-      board,
-      PieceColors.black
-    );
-
-    chessBoardMap[ChessPieceStartIndexes.LeftBlackBishop] = new BishopPiece(
-      board,
-      PieceColors.black
-    );
-
-    chessBoardMap[ChessPieceStartIndexes.BlackQueen] = new QueenPiece(
-      board,
-      PieceColors.black
-    );
-
-    chessBoardMap[ChessPieceStartIndexes.BlackKing] = new KingPiece(
-      board,
-      PieceColors.black
-    );
-
-    chessBoardMap[ChessPieceStartIndexes.RightBlackBishop] = new BishopPiece(
-      board,
-      PieceColors.black
-    );
-
-    chessBoardMap[ChessPieceStartIndexes.RightBlackKnight] = new KnightPiece(
-      board,
-      PieceColors.black
-    );
-
-    chessBoardMap[ChessPieceStartIndexes.RightBlackRook] = new RookPiece(
-      board,
-      PieceColors.black
-    );
+        chessBoardMap[boardIndex] = chessPiece;
+      }
+    }
 
     return board;
   }

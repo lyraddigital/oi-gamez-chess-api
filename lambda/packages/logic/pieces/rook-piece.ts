@@ -1,4 +1,4 @@
-import { PieceColor, PieceType } from "../models";
+import { PieceColor } from "../models";
 import { Board } from "../game";
 import { ROOK_MOVEMENT } from "../movement";
 
@@ -6,7 +6,7 @@ import { ChessPiece } from "./chess-piece";
 
 export class RookPiece extends ChessPiece {
   constructor(board: Board, color: PieceColor) {
-    super(board, PieceType.rook, color, ROOK_MOVEMENT);
+    super(board, color, ROOK_MOVEMENT);
   }
 
   public canMove(startIndex: number, endIndex: number): boolean {

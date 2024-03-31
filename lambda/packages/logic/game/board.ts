@@ -4,10 +4,6 @@ import { ChessPiece } from "../pieces";
 export class Board {
   constructor(private chessBoardMap: Record<number, ChessPiece>) {}
 
-  public setPiece(cellIndex: number, piece: ChessPiece): void {
-    this.chessBoardMap[cellIndex] = piece;
-  }
-
   public isOccupied(cellIndex: number): boolean {
     return !!this.chessBoardMap[cellIndex];
   }
