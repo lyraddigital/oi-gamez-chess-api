@@ -11,6 +11,20 @@ const stringAttribute = (stringValue: string): AttributeValue.SMember => ({
   S: stringValue,
 });
 
+const mapAttribute = (map: Map<number, string>): AttributeValue.MMember => {
+  const propertiesMap: Record<string, AttributeValue> = {};
+
+  for (let key of map.keys()) {
+    const value = map.get(key);
+
+    if (value) {
+      propertiesMap[key.toString()] = { S: value };
+    }
+  }
+
+  return { M: propertiesMap };
+};
+
 export const getDynamoString = (
   dynamoField?: AttributeValue,
   defaultValue: string = ""
@@ -48,6 +62,7 @@ export const dynamoFieldNames: DynamoFieldNames = {
     roomCode: "RoomCode",
     hostUsername: "HostUsername",
     whitePlayerUsername: "WhitePlayerUsername",
+    boardMap: "BoardMap",
   },
 };
 
@@ -60,6 +75,7 @@ export const dynamoFieldValues: DynamoFieldValues = {
     hostUsername: (hostUsername: string) => stringAttribute(hostUsername),
     whitePlayerUsername: (whitePlayerUsername: string) =>
       stringAttribute(whitePlayerUsername),
+    boardMap: (boardMap: Map<number, string>) => mapAttribute(boardMap),
   },
 };
 

@@ -10,6 +10,7 @@ interface GameFieldNames {
   roomCode: string;
   hostUsername: string;
   whitePlayerUsername: string;
+  boardMap: string;
 }
 
 interface GameFieldValues {
@@ -19,6 +20,7 @@ interface GameFieldValues {
   roomCode: (code: string) => AttributeValue.SMember;
   hostUsername: (hostUsername: string) => AttributeValue.SMember;
   whitePlayerUsername: (whitePlayerUsername: string) => AttributeValue.SMember;
+  boardMap: (boardMap: Map<number, string>) => AttributeValue.MMember;
 }
 
 interface DynamoKey {

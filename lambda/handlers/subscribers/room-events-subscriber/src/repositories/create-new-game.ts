@@ -11,7 +11,8 @@ import {
 export const createNewGame = async (
   gameId: string,
   roomCode: string,
-  hostUsername: string
+  hostUsername: string,
+  boardMap: Map<number, string>
 ): Promise<void> => {
   const input: PutItemCommandInput = {
     TableName: GAME_TABLE_NAME,
@@ -25,6 +26,8 @@ export const createNewGame = async (
         dynamoFieldValues.game.hostUsername(hostUsername),
       [dynamoFieldNames.game.whitePlayerUsername]:
         dynamoFieldValues.game.whitePlayerUsername(hostUsername),
+      [dynamoFieldNames.game.boardMap]:
+        dynamoFieldValues.game.boardMap(boardMap),
     },
     ConditionExpression: expressions.common.keysDoNotExists,
   };

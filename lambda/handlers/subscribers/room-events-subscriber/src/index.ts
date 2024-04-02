@@ -8,6 +8,7 @@ import {
   RoomRemovedEvent,
   publishRoomEvents,
 } from "@oigamez/event-bridge";
+import { DEFAULT_BOARD_MAP } from "@oigamez/logic";
 import { getCurrentGameByRoomCode, removeGame } from "@oigamez/repositories";
 
 import { validateEnvironment } from "./configuration";
@@ -25,7 +26,12 @@ export const handler = async (
     const { roomCode, hostUsername } = event.detail as RoomCreatedEvent;
 
     const uniqueGameId = generateGameId();
-    await createNewGame(uniqueGameId, roomCode, hostUsername);
+    await createNewGame(
+      uniqueGameId,
+      roomCode,
+      hostUsername,
+      DEFAULT_BOARD_MAP
+    );
 
     await publishRoomEvents<GameInitializedEvent>([
       new GameInitializedEvent(roomCode),
