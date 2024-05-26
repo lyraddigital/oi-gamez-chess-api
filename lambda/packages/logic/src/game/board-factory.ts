@@ -1,3 +1,4 @@
+import { PIECE_COLOR_PREFIXES, PieceColors, PieceType } from "../models";
 import {
   BishopPiece,
   ChessPiece,
@@ -7,7 +8,6 @@ import {
   QueenPiece,
   RookPiece,
 } from "../pieces";
-import { PIECE_COLOR_PREFIXES, PieceColors, PieceType } from "../models";
 
 import { Board } from "./board";
 import { DEFAULT_BOARD_MAP } from "./default-board-map";
