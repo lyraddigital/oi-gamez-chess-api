@@ -46,6 +46,12 @@
       ],
       "@oigamez/repositories": [
         "./lambda/packages/repositories/src"
+      ],
+      "@oigamez/responses": [
+        "./lambda/packages/responses/src"
+      ],
+      "@oigamez/validators": [
+        "./lambda/packages/validators/src"
       ]
     }
   },
