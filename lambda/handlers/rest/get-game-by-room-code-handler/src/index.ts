@@ -1,5 +1,6 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 
+import { getCurrentGameByRoomCode } from "@oigamez/repositories";
 import {
   corsBadRequestResponse,
   corsOkResponseWithData,
@@ -25,7 +26,9 @@ export const handler = async (
       return corsBadRequestResponse(validationResult.errorMessages);
     }
 
-    return corsOkResponseWithData(status);
+    const game = await getCurrentGameByRoomCode(roomCode!);
+
+    return corsOkResponseWithData(game);
   } catch (e) {
     console.log(e);
 

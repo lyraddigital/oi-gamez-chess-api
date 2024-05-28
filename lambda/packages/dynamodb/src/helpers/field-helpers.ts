@@ -14,7 +14,7 @@ const stringAttribute = (stringValue: string): AttributeValue.SMember => ({
 const mapAttribute = (map: Map<number, string>): AttributeValue.MMember => {
   const propertiesMap: Record<string, AttributeValue> = {};
 
-  for (let key of map.keys()) {
+  for (const key of map.keys()) {
     const value = map.get(key);
 
     if (value) {
@@ -50,6 +50,30 @@ export const getDynamoBoolean = (
   defaultValue: boolean = false
 ): boolean => {
   return dynamoField?.BOOL || defaultValue;
+};
+
+export const getDynamoNumberStringMap = (
+  dynamoField?: AttributeValue,
+  defaultValue: Map<number, string> = new Map<number, string>()
+): Map<number, string> => {
+  const dynamoMap = dynamoField?.M;
+
+  if (!dynamoMap) {
+    return defaultValue;
+  }
+
+  const numberStringMap = new Map<number, string>();
+
+  for (const key of Object.keys(dynamoMap)) {
+    const numberKey = parseInt(key, 10);
+    const value = dynamoMap[key].S;
+
+    if (value) {
+      numberStringMap.set(numberKey, value);
+    }
+  }
+
+  return numberStringMap;
 };
 
 export const dynamoFieldNames: DynamoFieldNames = {

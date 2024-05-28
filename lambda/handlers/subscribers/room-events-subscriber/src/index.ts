@@ -24,8 +24,8 @@ export const handler = async (
 
   if (detailType === RoomEventTypes.roomCreated) {
     const { roomCode, hostUsername } = event.detail as RoomCreatedEvent;
-
     const uniqueGameId = generateGameId();
+
     await createNewGame(
       uniqueGameId,
       roomCode,
