@@ -26,6 +26,8 @@ export const createNewGame = async (
         dynamoFieldValues.game.hostUsername(hostUsername),
       [dynamoFieldNames.game.whitePlayerUsername]:
         dynamoFieldValues.game.whitePlayerUsername(hostUsername),
+      [dynamoFieldNames.game.isWhiteTurn]:
+        dynamoFieldValues.game.isWhiteTurn(true),
       [dynamoFieldNames.game.boardMap]:
         dynamoFieldValues.game.boardMap(boardMap),
     },

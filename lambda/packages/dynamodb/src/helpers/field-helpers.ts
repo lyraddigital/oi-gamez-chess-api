@@ -11,6 +11,10 @@ const stringAttribute = (stringValue: string): AttributeValue.SMember => ({
   S: stringValue,
 });
 
+const boolAttribute = (boolValue: boolean): AttributeValue.BOOLMember => ({
+  BOOL: boolValue,
+});
+
 const mapAttribute = (map: Map<number, string>): AttributeValue.MMember => {
   const propertiesMap: Record<string, AttributeValue> = {};
 
@@ -86,6 +90,8 @@ export const dynamoFieldNames: DynamoFieldNames = {
     roomCode: "RoomCode",
     hostUsername: "HostUsername",
     whitePlayerUsername: "WhitePlayerUsername",
+    blackPlayerUsername: "BlackPlayerUsername",
+    isWhiteTurn: "IsWhiteTurn",
     boardMap: "BoardMap",
   },
 };
@@ -99,6 +105,9 @@ export const dynamoFieldValues: DynamoFieldValues = {
     hostUsername: (hostUsername: string) => stringAttribute(hostUsername),
     whitePlayerUsername: (whitePlayerUsername: string) =>
       stringAttribute(whitePlayerUsername),
+    blackPlayerUsername: (blackPlayerUsername: string) =>
+      stringAttribute(blackPlayerUsername),
+    isWhiteTurn: (isWhiteTurn: boolean) => boolAttribute(isWhiteTurn),
     boardMap: (boardMap: Map<number, string>) => mapAttribute(boardMap),
   },
 };

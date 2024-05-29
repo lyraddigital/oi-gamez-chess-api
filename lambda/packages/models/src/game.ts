@@ -3,5 +3,7 @@ export interface Game {
   roomCode: string;
   hostUsername: string;
   whitePlayerUsername: string;
+  blackPlayerUsername: string;
+  isWhiteTurn: boolean;
   boardMap: Record<string, string>;
 }

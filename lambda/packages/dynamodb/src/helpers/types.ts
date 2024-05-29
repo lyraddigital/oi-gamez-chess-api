@@ -10,6 +10,8 @@ interface GameFieldNames {
   roomCode: string;
   hostUsername: string;
   whitePlayerUsername: string;
+  blackPlayerUsername: string;
+  isWhiteTurn: string;
   boardMap: string;
 }
 
@@ -20,6 +22,8 @@ interface GameFieldValues {
   roomCode: (code: string) => AttributeValue.SMember;
   hostUsername: (hostUsername: string) => AttributeValue.SMember;
   whitePlayerUsername: (whitePlayerUsername: string) => AttributeValue.SMember;
+  blackPlayerUsername: (blackPlayerUsername: string) => AttributeValue.SMember;
+  isWhiteTurn: (isWhiteTurn: boolean) => AttributeValue.BOOLMember;
   boardMap: (boardMap: Map<number, string>) => AttributeValue.MMember;
 }
 

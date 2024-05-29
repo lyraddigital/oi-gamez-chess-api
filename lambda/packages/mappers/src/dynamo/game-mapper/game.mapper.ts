@@ -4,6 +4,7 @@ import {
   dynamoFieldNames,
   getDynamoNumberStringMap,
   getDynamoString,
+  getDynamoBoolean,
 } from "@oigamez/dynamodb";
 import { Game } from "@oigamez/models";
 
@@ -20,6 +21,12 @@ export const mapFromDynamoToGame = (
     ),
     whitePlayerUsername: getDynamoString(
       dynamoRecord[dynamoFieldNames.game.whitePlayerUsername]
+    ),
+    blackPlayerUsername: getDynamoString(
+      dynamoRecord[dynamoFieldNames.game.blackPlayerUsername]
+    ),
+    isWhiteTurn: getDynamoBoolean(
+      dynamoRecord[dynamoFieldNames.game.isWhiteTurn]
     ),
     boardMap: mapFromNumberStringMapToRecord(
       getDynamoNumberStringMap(dynamoRecord[dynamoFieldNames.game.boardMap])
