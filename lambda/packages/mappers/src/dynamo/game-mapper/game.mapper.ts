@@ -7,7 +7,7 @@ import {
 } from "@oigamez/dynamodb";
 import { Game } from "@oigamez/models";
 
-import { mapFromNumberStringMapToStringStringMap } from "../../board-mapper";
+import { mapFromNumberStringMapToRecord } from "../../board-mapper";
 
 export const mapFromDynamoToGame = (
   dynamoRecord: Record<string, AttributeValue>
@@ -21,7 +21,7 @@ export const mapFromDynamoToGame = (
     whitePlayerUsername: getDynamoString(
       dynamoRecord[dynamoFieldNames.game.whitePlayerUsername]
     ),
-    boardMap: mapFromNumberStringMapToStringStringMap(
+    boardMap: mapFromNumberStringMapToRecord(
       getDynamoNumberStringMap(dynamoRecord[dynamoFieldNames.game.boardMap])
     ),
   };

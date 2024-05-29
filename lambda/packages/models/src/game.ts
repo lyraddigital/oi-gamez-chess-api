@@ -3,5 +3,5 @@ export interface Game {
   roomCode: string;
   hostUsername: string;
   whitePlayerUsername: string;
-  boardMap: Map<string, string>;
+  boardMap: Record<string, string>;
 }

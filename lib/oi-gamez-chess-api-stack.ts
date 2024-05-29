@@ -2,7 +2,7 @@ import * as cdk from "aws-cdk-lib";
 import { EventBus } from "aws-cdk-lib/aws-events";
 import { Construct } from "constructs";
 
-import { ChessTable, RoomEventsSubscriber } from "./constructs";
+import { ChessRestApi, ChessTable, RoomEventsSubscriber } from "./constructs";
 import { IndexNames } from "./constants";
 
 export class OiGamezChessApiStack extends cdk.Stack {
@@ -38,6 +38,12 @@ export class OiGamezChessApiStack extends cdk.Stack {
       roomReceiveEventBus,
       roomReceiveEventBusSourceName,
       gameTypeId: 1, // Make this some code later on that is configurable
+    });
+
+    new ChessRestApi(this, "RoomRestApi", {
+      gameTable: gameTable.table,
+      allowedOrigins: "http://localhost:3000",
+      roomCodeIndexName: IndexNames.roomCode,
     });
   }
 }
